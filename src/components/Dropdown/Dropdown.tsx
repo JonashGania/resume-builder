@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import DropdownList from "./DropdownList"
+import { FormData } from "../../interface/types";
 
 interface DropdownInt {
     options: string[];
     selectSpan: string;
+    section: keyof FormData;
+    field: string;
+    onChange: (section: keyof FormData, field: string, value: string) => void;
 }
 
-const Dropdown: React.FC<DropdownInt> = ({ options, selectSpan }) => {
+const Dropdown: React.FC<DropdownInt> = ({ options, selectSpan, section, field, onChange }) => {
     const [menuShow, setMenuShow] = useState(false);
     const [selected, setSelected] = useState("");
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -18,6 +22,7 @@ const Dropdown: React.FC<DropdownInt> = ({ options, selectSpan }) => {
     const handleSelectOption = (option: string) => {
         setSelected(option);
         setMenuShow(false);
+        onChange(section, field, option);
     }
 
     useEffect(() => {
@@ -34,7 +39,7 @@ const Dropdown: React.FC<DropdownInt> = ({ options, selectSpan }) => {
     }, []);
 
     return (
-        <div ref={dropdownRef} className=" min-w-[185px] relative w-full">
+        <div ref={dropdownRef} className=" min-w-[120px] relative w-full">
             <button 
                 className="bg-transparent px-2 py-2 border rounded-sm border-gray-300 flex items-center justify-between gap-4 w-full"
                 onClick={toggleMenu}
