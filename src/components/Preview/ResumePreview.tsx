@@ -15,7 +15,7 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ formData }) => {
             <div className="resume-preview bg-white min-h-[550px] rounded-md px-16 py-16">
                 <PersonalInfoSection personalInfo={formData.personalInfo}/>
                 <EducationSection educationInfo={formData.educationInfo}/>
-                <ExperienceSection experienceInfo={formData.experienceInfo}/>
+                <ExperienceSection/>
                 <SkillsSection />
             </div>
             <button className="px-4 py-3 bg-black rounded-md flex items-center gap-2 mt-8 justify-self-end">
