@@ -17,8 +17,8 @@ const Form: React.FC<FormProps> = ({ formData, onInputChange }) => {
     const steps = [
         <PersonalInfoForm data={formData.personalInfo} onChange={onInputChange} />,
         <EducationForm educationData={formData.educationInfo} onChange={onInputChange}/>,
-        <ExperienceForm experienceData={formData.experienceInfo} onChange={onInputChange} />,
-        <SkillsForm />,
+        <ExperienceForm />,
+        <SkillsForm skillsData={formData.skillsInfo}/>,
     ]
 
     const handleNext = () => {
