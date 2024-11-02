@@ -26,8 +26,13 @@ export interface ExperienceInfo{
     jobDescription: string,
 }
 
+export interface SkillsInfo {
+    technicalSkills: string[],
+    personalSkills: string[],
+}
+
 export interface FormData{
     personalInfo: PersonalInfo;
     educationInfo: EducationInfo;
-    experienceInfo: ExperienceInfo;
+    skillsInfo: SkillsInfo;
 }
