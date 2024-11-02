@@ -8,6 +8,7 @@ interface PersonalInfoProps {
 }
 
 const PersonalInfoForm: React.FC<PersonalInfoProps> = ({ data, onChange }) => {
+
     return (
         <div>
             <h2 className="text-xl font-bold pb-4">Personal Information</h2>
@@ -50,8 +51,10 @@ const PersonalInfoForm: React.FC<PersonalInfoProps> = ({ data, onChange }) => {
                     <input 
                         type="tel" 
                         id="phone" 
-                        value={data.phone} 
-                        onChange={(e) => onChange('personalInfo', 'phone', e.target.value)} 
+                        value={data.phone}
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        onChange={(e) => onChange('personalInfo', 'phone', e.target.value.replace(/[^0-9]/g, ''))} 
                         className="w-full mt-1 border rounded-sm border-gray-300 px-2 py-2 outline-none text-slate-600 focus:border-slate-600 text-ellipsis"
                     />
                 </div>
