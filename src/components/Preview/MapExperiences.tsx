@@ -1,7 +1,7 @@
 import React from "react";
 import { formattedDate } from "../../helpers/utils";
 import { ExperienceInfo } from "../../interface/types";
-import { useExperience } from "../../context/context";
+import { capitalizeWords } from "../../helpers/utils";
 
 interface MapExperiencesProps {
     experienceInfo: ExperienceInfo
@@ -10,19 +10,19 @@ interface MapExperiencesProps {
 const MapExperiences: React.FC<MapExperiencesProps> = ({ experienceInfo }) => {
     const startDate = formattedDate(experienceInfo.startDate);
     const endDate = formattedDate(experienceInfo.endDate);
-
-    const { workingHere } = useExperience();
+    const position = capitalizeWords(experienceInfo.position);
+    const location = capitalizeWords(experienceInfo.companyCity)
 
     return (
         <div className="pb-8">
             <div className="flex justify-between">
                 <div>
                     <h2 className="text-lg font-bold leading-5">{experienceInfo.companyName}</h2>
-                    <h4>{experienceInfo.position}</h4>
+                    <h4>{position}</h4>
                 </div>
                 <div className="text-end">
-                    <h4 className="leading-5">{experienceInfo.companyCity}</h4>
-                    <h4>{startDate} - {workingHere ? "Current" : endDate}</h4>
+                    <h4 className="leading-5">{location}</h4>
+                    <h4>{startDate} - {experienceInfo.workingHere ? "Current" : endDate}</h4>
                 </div>
             </div>
             <div>
