@@ -1,5 +1,5 @@
 import MapExperiences from "./MapExperiences"
-import { useExperience } from "../../context/context"
+import { useExperience } from "../../context/experienceContext"
 
 const ExperienceSection = () => {
     const { experiences, currentExperience } = useExperience()
