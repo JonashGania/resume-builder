@@ -24,15 +24,10 @@ export interface ExperienceInfo{
     startDate: string,
     endDate: string,
     jobDescription: string,
-}
-
-export interface SkillsInfo {
-    technicalSkills: string[],
-    personalSkills: string[],
+    workingHere: boolean,
 }
 
 export interface FormData{
     personalInfo: PersonalInfo;
     educationInfo: EducationInfo;
-    skillsInfo: SkillsInfo;
 }
