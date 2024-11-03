@@ -2,7 +2,8 @@ import { useState } from "react";
 import Form from "./Form/Form"
 import ResumePreview from "./Preview/ResumePreview"
 import { FormData } from "../interface/types";
-import { ExperienceProvider } from "../context/context";
+import { ExperienceProvider } from "../context/experienceContext";
+import { SkillsProvider } from "../context/skillsContext";
 
 const initialFormData: FormData = {
     personalInfo: {
@@ -22,10 +23,6 @@ const initialFormData: FormData = {
         gradMonth: '', 
         gradYear: ''
     },
-    skillsInfo: {
-        technicalSkills: [''],
-        personalSkills: [''],
-    }
 }
 
 const ResumeBuilder = () => {
@@ -38,13 +35,16 @@ const ResumeBuilder = () => {
         }))
     }
 
+
     return (
-        <ExperienceProvider>
-            <div className="w-full flex gap-6 pt-8">
-                <Form formData={formData} onInputChange={handleInputChange}/>
-                <ResumePreview formData={formData}/>
-            </div>
-        </ExperienceProvider>
+        <SkillsProvider>
+            <ExperienceProvider>
+                <div className="w-full flex gap-6 pt-8">
+                    <Form formData={formData} onInputChange={handleInputChange}/>
+                    <ResumePreview formData={formData}/>
+                </div>
+            </ExperienceProvider>
+        </SkillsProvider>
     )
 }
 
