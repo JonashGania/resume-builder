@@ -9,3 +9,15 @@ export const formattedDate = (date: string) => {
     }
     return ''
 }
+
+export const capitalizeWords = (text: string) => {
+    if(!text) return "";
+
+    const words = text.split(" ");
+    const capitalize = words.map((word) => {
+        return word ? word[0].toUpperCase() + word.substring(1) : "";
+    }).join(" ");
+    return capitalize
+
+}
+     
