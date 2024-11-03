@@ -3,7 +3,7 @@ import PersonalInfoForm from "./PersonalInfoForm"
 import EducationForm from "./EducationForm"
 import ExperienceForm from "./ExperienceForm"
 import SkillsForm from "./SkillsForm"
-import StepsNavigate from "../StepsNavigate"
+import StepsNavigate from "../Buttons/StepsNavigate"
 import { FormData } from "../../interface/types"
 
 interface FormProps {
@@ -18,7 +18,7 @@ const Form: React.FC<FormProps> = ({ formData, onInputChange }) => {
         <PersonalInfoForm data={formData.personalInfo} onChange={onInputChange} />,
         <EducationForm educationData={formData.educationInfo} onChange={onInputChange}/>,
         <ExperienceForm />,
-        <SkillsForm skillsData={formData.skillsInfo}/>,
+        <SkillsForm />,
     ]
 
     const handleNext = () => {
