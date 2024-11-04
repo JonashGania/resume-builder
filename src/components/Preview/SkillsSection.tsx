@@ -8,9 +8,9 @@ const SkillsSection = () => {
             <h2 className="text-center font-bold">Skills</h2>
             <div className="pb-4">
                 <h4 className="font-bold">Technical Skills</h4>
-                <ul className="list-disc pl-8">
+                <ul className=" pl-8">
                     {technicalSkills.map((skills, index) => (
-                        <li key={index} className=" leading-5">{skills}</li>
+                        <li key={index} className="list-disc">{skills}</li>
                     ))}
                 </ul>
             </div>
