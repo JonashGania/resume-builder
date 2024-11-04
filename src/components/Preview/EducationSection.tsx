@@ -13,7 +13,7 @@ const EducationSection: React.FC<EducationSectionProps> = ({ educationInfo }) =>
     const major = capitalizeWords(educationInfo.major);
 
     return (
-        <section className="w-full pt-8">
+        <section className="w-full pt-4">
             <h2 className="text-center font-bold pb-2">Education</h2>
             <div className="flex justify-between">
                 <div>
