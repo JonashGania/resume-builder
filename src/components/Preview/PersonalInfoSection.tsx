@@ -14,12 +14,14 @@ const PersonalInfoSection: React.FC<PersonalInfoProps> = ({ personalInfo }) => {
 
     return (
         <section className="w-full">
-            <h2 className="text-center text-xl border-black border-b font-bold">{firstName} {lastName}</h2>
-            <div className="text-center">
-                <span>{address} </span>
-                <span>• {city}, {personalInfo.postalCode} </span>
-                <span>• {personalInfo.email} </span>
-                <span>• {personalInfo.phone}</span>
+            <div className="border-b border-black">
+                <h2 className="text-3xl font-bold pb-2">{firstName} {lastName}</h2>
+                <div className="flex flex-col leading-5">
+                    <span>{address} </span>
+                    <span>{city}, {personalInfo.postalCode}</span>
+                    <span>{personalInfo.email}</span>
+                    <span>{personalInfo.phone}</span>
+                </div>
             </div>
         </section>
     )
