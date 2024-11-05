@@ -13,6 +13,10 @@ export default {
         'lato': ["Lato", "sans-serif"],
       },
     },
+    screens: {
+      'mobile': '550px',
+      'laptop': '1100px'
+    }
   },
   plugins: [],
 }
