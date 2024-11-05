@@ -26,7 +26,7 @@ export const capitalizeWords = (text: string) => {
 export const handleDownloadPDF = (resumeRef: React.RefObject<HTMLDivElement>, formData: FormData) => {
     const element = resumeRef.current;
     const options = {
-        margin: 0,
+        margin: 0.1,
         filename: `${formData.personalInfo.lastName ? formData.personalInfo.lastName : "my"}_resume.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { scale: 2 },
