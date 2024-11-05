@@ -9,7 +9,7 @@ interface StepsNavigateProps {
 
 const StepsNavigate: React.FC<StepsNavigateProps> = ({ isFirstStep, isLastStep, onNext, onBack }) => {
     return (
-        <div className="flex justify-end gap-4 pt-12">
+        <div className="flex justify-end gap-4 pt-16">
             <button 
                 onClick={onBack} 
                 disabled={isFirstStep} 
