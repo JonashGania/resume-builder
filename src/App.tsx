@@ -6,7 +6,7 @@ import Footer from './components/Footer'
 function App() {
 
   return (
-    <div className='px-12 pt-12 bg-gray-200 w-full min-h-screen'>
+    <div className='px-4 mobile:px-12 pt-12 bg-gray-200 w-full min-h-screen'>
       <Header />
       <ResumeBuilder />
       <Footer />
