@@ -56,8 +56,8 @@ const EducationForm: React.FC<EducationFormProps> = ({ educationData, onChange }
                 </div>
                 <div className="pt-4">
                     <span>Graduation Date</span>
-                    <div className="w-full flex gap-4 mt-1">
-                        <div className="w-1/2">
+                    <div className="w-full flex-col mobile:flex-row flex gap-4 mt-1">
+                        <div className="mobile:w-1/2 w-full">
                             <Dropdown 
                                 options={data.months} 
                                 selectSpan={'Month'} 
@@ -66,7 +66,7 @@ const EducationForm: React.FC<EducationFormProps> = ({ educationData, onChange }
                                 onChange={onChange}
                             />
                         </div>
-                        <div className="w-1/2">
+                        <div className="mobile:w-1/2 w-full">
                             <Dropdown 
                                 options={data.years} 
                                 selectSpan={'Year'} 
