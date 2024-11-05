@@ -34,8 +34,8 @@ const Form: React.FC<FormProps> = ({ formData, onInputChange }) => {
     }
 
     return (
-        <div className="w-[45%]">
-            <div className="bg-white px-8 pt-8 pb-6 rounded-md min-h-[550px] flex flex-col justify-between">
+        <div className="laptop:w-[45%] w-full laptop:max-w-[700px] max-w-[500px]">
+            <div className="bg-white px-4 pt-4 mobile:px-8 mobile:pt-8 pb-6 rounded-md min-h-[500px] mobile:min-h-[600px] flex flex-col justify-between">
                 {steps[currentStep]}
                 <StepsNavigate 
                     isFirstStep={currentStep === 0} 
