@@ -73,7 +73,7 @@ const ExperienceForm = () => {
                         type="checkbox" 
                         className="w-4 h-4 cursor-pointer"
                         checked={currentExperience.workingHere} 
-                        onClick={handleCurrentlyWorkHere}
+                        onChange={handleCurrentlyWorkHere}
                     />
                     <span className="text-md text-slate-600">I currently work here</span>
                 </div>
