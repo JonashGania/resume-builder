@@ -2,16 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-.dropdown-list::-webkit-scrollbar{
+.dropdown-list::-webkit-scrollbar, .preview-scrollbar::-webkit-scrollbar{
     width: 7px;
 }
-.dropdown-list::-webkit-scrollbar-thumb {
+.dropdown-list::-webkit-scrollbar-thumb, .preview-scrollbar::-webkit-scrollbar-thumb {
     background-color: #e2e2e2; 
     border-radius: 10px; 
 }
 
-.dropdown-list::-webkit-scrollbar-thumb:hover {
+.dropdown-list::-webkit-scrollbar-thumb:hover, .dropdown-list::-webkit-scrollbar-thumb:hover {
     background-color: #c7c7c7; 
+}
+
+.preview-overlay{
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s ease;
+}
+
+.preview-overlay.open{
+    opacity: 1;
+    visibility: visible;
+}
+
+.preview-container{
+    transition: all 0.5s ease-in;
+    transform: translateY(150px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preview-container.open{
+    transform: translateY(0px);
+    opacity: 1;
+    visibility: visible;
 }
 
 @layer base { 
@@ -19,4 +43,3 @@
         display: initial; 
     } 
 }
-
