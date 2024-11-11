@@ -17,7 +17,8 @@ const EducationForm: React.FC<EducationFormProps> = ({ educationData, onChange }
                 <div>
                     <input 
                         type="text" 
-                        id="school-name" 
+                        id="school-name"
+                        data-testid='school-name' 
                         placeholder="School/University"
                         value={educationData.schoolName}
                         onChange={(e) => onChange('educationInfo', 'schoolName', e.target.value)}
@@ -28,6 +29,7 @@ const EducationForm: React.FC<EducationFormProps> = ({ educationData, onChange }
                     <input 
                         type="text" 
                         id="school-location"
+                        data-testid='school-location'
                         placeholder="Location"
                         value={educationData.location}
                         onChange={(e) => onChange('educationInfo', 'location', e.target.value)} 
@@ -37,7 +39,8 @@ const EducationForm: React.FC<EducationFormProps> = ({ educationData, onChange }
                 <div>
                     <input 
                         type="text" 
-                        id="degree" 
+                        id="degree"
+                        data-testid='degree' 
                         placeholder="Degree" 
                         value={educationData.degree}
                         onChange={(e) => onChange('educationInfo', 'degree', e.target.value)}
@@ -47,7 +50,8 @@ const EducationForm: React.FC<EducationFormProps> = ({ educationData, onChange }
                 <div>
                     <input 
                         type="text" 
-                        id="major" 
+                        id="major"
+                        data-testid='major' 
                         placeholder="Major/Field of Study" 
                         value={educationData.major}
                         onChange={(e) => onChange('educationInfo', 'major', e.target.value)}
