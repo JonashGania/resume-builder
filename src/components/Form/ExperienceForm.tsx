@@ -16,7 +16,8 @@ const ExperienceForm = () => {
                 <div>
                     <input 
                         type="text" 
-                        id="job-title" 
+                        id="job-title"
+                        data-testid="job-title" 
                         placeholder="Position"
                         value={currentExperience.position}
                         onChange={(e) => handleChange('position', e.target.value)}
@@ -26,7 +27,8 @@ const ExperienceForm = () => {
                 <div >
                     <input 
                         type="text" 
-                        id="company" 
+                        id="company"
+                        data-testid="company" 
                         placeholder="Company/Organization"
                         value={currentExperience.companyName}
                         onChange={(e) => handleChange('companyName', e.target.value)} 
@@ -36,7 +38,8 @@ const ExperienceForm = () => {
                 <div>
                     <input 
                         type="text" 
-                        id="company-location" 
+                        id="company-location"
+                        data-testid="company-location" 
                         placeholder="Company City/State"
                         value={currentExperience.companyCity}
                         onChange={(e) => handleChange('companyCity', e.target.value)} 
@@ -48,7 +51,8 @@ const ExperienceForm = () => {
                         <span>Start Date</span>
                         <input 
                             type="text" 
-                            id="start-date" 
+                            id="start-date"
+                            data-testid="start-date" 
                             placeholder="MM/DD/YYYY"
                             value={currentExperience.startDate}
                             onChange={(e) => handleChange('startDate', e.target.value.replace(/[^0-9/]/g, ''))} 
@@ -61,6 +65,7 @@ const ExperienceForm = () => {
                             type="text" 
                             id="end-date" 
                             placeholder="MM/DD/YYYY"
+                            data-testid="end-date"
                             value={currentExperience.endDate}
                             disabled={currentExperience.workingHere}
                             onChange={(e) => handleChange('endDate', e.target.value.replace(/[^0-9/]/g, ''))} 
@@ -70,7 +75,7 @@ const ExperienceForm = () => {
                 </div>
                 <div className="flex items-center gap-2">
                     <input 
-                        type="checkbox" 
+                        type="checkbox"
                         className="w-4 h-4 cursor-pointer"
                         checked={currentExperience.workingHere} 
                         onChange={handleCurrentlyWorkHere}
@@ -79,7 +84,8 @@ const ExperienceForm = () => {
                 </div>
                 <div>
                     <textarea 
-                        id="job-description" 
+                        id="job-description"
+                        data-testid="job-description" 
                         placeholder="Job Description" 
                         cols={30}
                         rows={3}
