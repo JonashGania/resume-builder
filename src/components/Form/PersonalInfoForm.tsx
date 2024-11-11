@@ -19,7 +19,8 @@ const PersonalInfoForm: React.FC<PersonalInfoProps> = ({ data, onChange }) => {
                         <input 
                             type="text"
                             value={data.firstName} 
-                            id="firstName" 
+                            id="firstName"
+                            data-testid="firstName" 
                             onChange={(e) => onChange('personalInfo', 'firstName', e.target.value)}
                             className="w-full mt-1 border rounded-sm border-gray-300 px-2 py-2 outline-none text-slate-600 focus:border-slate-600 text-ellipsis"
                         />
@@ -29,6 +30,7 @@ const PersonalInfoForm: React.FC<PersonalInfoProps> = ({ data, onChange }) => {
                         <input 
                             type="text" 
                             id="lastName" 
+                            data-testid="lastName"
                             value={data.lastName} 
                             onChange={(e) => onChange('personalInfo', 'lastName', e.target.value)} 
                             className="w-full mt-1 border rounded-sm border-gray-300 px-2 py-2 outline-none text-slate-600 focus:border-slate-600 text-ellipsis"
@@ -40,6 +42,7 @@ const PersonalInfoForm: React.FC<PersonalInfoProps> = ({ data, onChange }) => {
                     <input 
                         type="email" 
                         id="email" 
+                        data-testid="email"
                         value={data.email} 
                         onChange={(e) => onChange('personalInfo', 'email', e.target.value)} 
                         className="w-full mt-1 border rounded-sm border-gray-300 px-2 py-2 outline-none text-slate-600 focus:border-slate-600 text-ellipsis" 
@@ -50,7 +53,8 @@ const PersonalInfoForm: React.FC<PersonalInfoProps> = ({ data, onChange }) => {
                     <label htmlFor="phone" className="text-slate-600">Phone</label>
                     <input 
                         type="tel" 
-                        id="phone" 
+                        id="phone"
+                        data-testid="phone" 
                         value={data.phone}
                         inputMode="numeric"
                         pattern="[0-9]*"
@@ -63,7 +67,8 @@ const PersonalInfoForm: React.FC<PersonalInfoProps> = ({ data, onChange }) => {
                         <label htmlFor="address" className="text-slate-600">Address</label>
                         <input 
                             type="text" 
-                            id="address" 
+                            id="address"
+                            data-testid="address" 
                             value={data.address} 
                             onChange={(e) => onChange('personalInfo', 'address', e.target.value)} 
                             className="w-full mt-1 border rounded-sm border-gray-300 px-2 py-2 outline-none text-slate-600 focus:border-slate-600 text-ellipsis"
@@ -74,7 +79,8 @@ const PersonalInfoForm: React.FC<PersonalInfoProps> = ({ data, onChange }) => {
                             <label htmlFor="city" className="text-slate-600">City</label>
                             <input 
                                 type="text" 
-                                id="city" 
+                                id="city"
+                                data-testid="city" 
                                 value={data.city} 
                                 onChange={(e) => onChange('personalInfo', 'city', e.target.value)} 
                                 className="w-full mt-1 border rounded-sm border-gray-300 px-2 py-2 outline-none text-slate-600 focus:border-slate-600 text-ellipsis"
@@ -84,7 +90,8 @@ const PersonalInfoForm: React.FC<PersonalInfoProps> = ({ data, onChange }) => {
                             <label htmlFor="postal-code" className="text-slate-600">Postal Code</label>
                             <input 
                                 type="text" 
-                                id="postal-code" 
+                                id="postal-code"
+                                data-testid="postal-code" 
                                 value={data.postalCode} 
                                 onChange={(e) => onChange('personalInfo', 'postalCode', e.target.value)} 
                                 className="w-full mt-1 border rounded-sm border-gray-300 px-2 py-2 outline-none text-slate-600 focus:border-slate-600 text-ellipsis"
