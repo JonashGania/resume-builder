@@ -13,7 +13,7 @@ interface ExperienceContextProps {
     handleCurrentlyWorkHere: () => void;
 }
 
-const ExperienceContext = createContext<ExperienceContextProps | undefined>(undefined);
+export const ExperienceContext = createContext<ExperienceContextProps | undefined>(undefined);
 
 export const useExperience = () => {    // custom hook for using Experience Context
     const context = useContext(ExperienceContext);
