@@ -14,7 +14,7 @@ interface SkillsContextProps{
 }
 
 
-const SkillsContext = createContext<SkillsContextProps | undefined>(undefined);
+export const SkillsContext = createContext<SkillsContextProps | undefined>(undefined);
 
 export const useSkills = () => {    // custom hook for using Skills Context
     const context = useContext(SkillsContext);
