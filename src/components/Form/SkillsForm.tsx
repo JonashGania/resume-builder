@@ -7,11 +7,12 @@ const SkillsForm = () => {
     return (
         <div>
             <div>
-                <h2 className="text-xl font-bold">Techinical Skills</h2>
+                <h2 className="text-xl font-bold">Technical Skills</h2>
                 <div className="flex flex-col gap-2">
                     {technicalSkills.map((value, index)  =>(
                         <input
-                            key={index} 
+                            key={index}
+                            data-testid="technicalSkills" 
                             type="text"
                             value={value}
                             onChange={(e) => handleTechnicalSkills(index, e.target.value)} 
@@ -32,7 +33,8 @@ const SkillsForm = () => {
                 <div className="flex flex-col gap-2">
                     {personalSkills.map((value,index) => (
                         <input
-                            key={index} 
+                            key={index}
+                            data-testid="personalSkills" 
                             type="text"
                             value={value}
                             onChange={(e) => handlePersonalSkills(index, e.target.value)} 
