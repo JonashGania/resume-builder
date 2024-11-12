@@ -4,7 +4,7 @@ const SkillsSection = () => {
     const { technicalSkills, personalSkills } = useSkills();
 
     return (
-        <section className="w-full">
+        <section data-testid="skills-section" className="w-full">
             <h2 className="text-center font-bold">Skills</h2>
             <div className="pb-4">
                 <h4 className="font-bold">Technical Skills</h4>
