@@ -12,7 +12,11 @@ interface ResumePreviewProps {
 
 const ResumePreview: React.FC<ResumePreviewProps> = ({ resumeRef, formData }) => {
     return (
-        <div ref={resumeRef} className="resume-preview font-lato bg-white min-h-[600px] rounded-md px-8 py-8 laptop:px-16 laptop:py-16">
+        <div 
+            data-testid="resume-preview" 
+            ref={resumeRef} 
+            className="resume-preview font-lato bg-white min-h-[600px] rounded-md px-8 py-8 laptop:px-16 laptop:py-16"
+        >
             <PersonalInfoSection personalInfo={formData.personalInfo}/>
             <EducationSection educationInfo={formData.educationInfo}/>
             <ExperienceSection/>
