@@ -13,7 +13,10 @@ const PreviewContent: React.FC<ResumePreviewProps> = ({ formData, isOpen, handle
     const resumeRef = useRef<HTMLDivElement>(null);
 
     return (
-        <div className={`preview-overlay ${isOpen ? 'open' : ''} fixed top-0 left-0 w-full min-h-screen bg-[rgba(0,0,0,0.6)] laptop:hidden flex items-center px-4 z-10`}>
+        <div 
+            data-testid="preview-overlay" 
+            className={`preview-overlay ${isOpen ? 'open' : ''} fixed top-0 left-0 w-full min-h-screen bg-[rgba(0,0,0,0.6)] laptop:hidden flex items-center px-4 z-10`}
+        >
             <div className={`preview-container ${isOpen ? 'open' : ''} bg-white w-full max-w-[700px] mx-auto h-[95vh] rounded-xl px-4 py-4 flex flex-col gap-4`}>
                 <div className="h-full border-l-2 border-t-2 border-black overflow-y-scroll preview-scrollbar">
                     <ResumePreview resumeRef={resumeRef} formData={formData}/>
