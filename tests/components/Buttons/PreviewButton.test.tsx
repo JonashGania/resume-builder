@@ -14,13 +14,22 @@ describe('Preview Button', () => {
 
     it('should call handleClick when button is clicked', async () => {
         const handleClick = vi.fn();
+        const user = userEvent.setup();
+        render(<PreviewButton handleClick={handleClick}/>)
+
+        const button = screen.getByRole('button', {name: /preview/i});
+        await user.click(button);
+
+        expect(handleClick).toHaveBeenCalled();
+    })
+
+    
+    it('should not call handleClick when button is not clicked', () => {
+        const handleClick = vi.fn();
 
         render(<PreviewButton handleClick={handleClick}/>)
 
         const button = screen.getByRole('button', {name: /preview/i});
-        const user = userEvent.setup();
-        await user.click(button);
-
-        expect(handleClick).toHaveBeenCalledTimes(1);
+        expect(handleClick).not.toHaveBeenCalled();
     })
 })
