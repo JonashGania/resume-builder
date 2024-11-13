@@ -2,31 +2,44 @@ import { act, render, screen } from '@testing-library/react'
 import Dropdown from '../../../src/components/Dropdown/Dropdown'
 import userEvent from '@testing-library/user-event';
 
-describe('Dropdown', () => {
-    const mockOnChange = vi.fn();
-    const itemOptions = ['January', 'February', 'March', 'April']
+const mockOnChange = vi.fn();
+const itemOptions = ['January', 'February', 'March', 'April']
 
-    it('should toggle visibility when the button is clicked', async () => {
+describe('Dropdown', () => {
+    it('should initially render placeholder text', () => {
         render(
             <Dropdown 
-            options={itemOptions} 
-            selectSpan='Month' 
-            section='educationInfo' 
-            field='gradMonth' 
-            onChange={mockOnChange}/>
+                options={itemOptions} 
+                selectSpan='Month' 
+                section='educationInfo' 
+                field='gradMonth' 
+                onChange={mockOnChange}
+            />
         )
 
-        const button = screen.getByRole('button');
+        expect(screen.getByText('Month')).toBeInTheDocument();
+    })
 
-        let itemList = screen.queryAllByTestId('dropdown-item');
-        expect(itemList).toHaveLength(0);
-
+    it('should toggle the Dropdown when clicked', async () => {
         const user = userEvent.setup();
+        render(
+            <Dropdown 
+                options={itemOptions} 
+                selectSpan='Month' 
+                section='educationInfo' 
+                field='gradMonth' 
+                onChange={mockOnChange}
+            />
+        )
+
+        expect(screen.queryByRole('list')).not.toBeInTheDocument();
+
+        const button = screen.getByRole('button');
         await user.click(button);
 
-        itemList = screen.queryAllByTestId('dropdown-item');
-        expect(itemList).toHaveLength(itemOptions.length);
+        expect(screen.queryByRole('list')).toBeInTheDocument();
 
+        const itemList = screen.queryAllByTestId('dropdown-item');
         itemOptions.forEach((item, index) => {
             const name = itemList[index];
             expect(name).toBeInTheDocument();
@@ -35,6 +48,7 @@ describe('Dropdown', () => {
     })
 
     it('should close the dropdown when clicking outside', async () => {
+        const user = userEvent.setup();
         render(
             <Dropdown 
             options={itemOptions} 
@@ -45,16 +59,13 @@ describe('Dropdown', () => {
         )
 
         const button = screen.getByRole('button');
-        const user = userEvent.setup();
         await user.click(button);
 
-        let itemList = screen.queryAllByTestId('dropdown-item');
-        expect(itemList).toHaveLength(itemOptions.length);
+        expect(screen.queryByRole('list')).toBeInTheDocument();
 
         await user.click(document.body);
 
-        itemList = screen.queryAllByTestId('dropdown-item');
-        expect(itemList).toHaveLength(0);
+        expect(screen.queryByRole('list')).not.toBeInTheDocument();
 
         itemOptions.forEach((item) => {
             const name = screen.queryByText(item);
@@ -63,6 +74,7 @@ describe('Dropdown', () => {
     })
 
     it('should call onChange with correct arguments when an option is selected', async () => {
+        const user = userEvent.setup();
         render(
             <Dropdown 
             options={itemOptions} 
@@ -73,11 +85,10 @@ describe('Dropdown', () => {
         )
 
         const button = screen.getByRole('button');
-        const user = userEvent.setup();
 
         await user.click(button);
 
-        const option = screen.getByText('January');
+        const option = screen.getByText(itemOptions[0]);
         await user.click(option);
 
         expect(mockOnChange).toHaveBeenCalledWith('educationInfo', 'gradMonth', 'January')
