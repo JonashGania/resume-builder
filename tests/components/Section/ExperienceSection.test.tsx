@@ -6,31 +6,30 @@ import { ExperienceInfo } from '../../../src/interface/types';
 import { ReactNode } from 'react';
 
 vi.mock('../../../src/components/Section/MapExperiences');
+const mockExperiences: ExperienceInfo[] = [
+    {   position: 'Software Engineer', 
+        companyName: 'ABC Corp', 
+        companyCity: 'Houston', 
+        startDate: '01/02/2024', 
+        endDate: '05/02/2024', 
+        jobDescription: 'Web development', 
+        workingHere: false 
+    },
+    {   position: 'Frontend Developer', 
+        companyName: 'XYZ Inc', 
+        companyCity: 'Los Angeles', 
+        startDate: '07/02/2024', 
+        endDate: '', 
+        jobDescription: 'Web development', 
+        workingHere: true 
+    },
+];
+
+const mockOnChange = vi.fn();
+const mockAddExperience = vi.fn();
+const mockHandleCurrentlyWorkHere = vi.fn();
 
 describe('ExperienceSection', () => {
-    const mockExperiences: ExperienceInfo[] = [
-        {   position: 'Software Engineer', 
-            companyName: 'ABC Corp', 
-            companyCity: 'Houston', 
-            startDate: '01/02/2024', 
-            endDate: '05/02/2024', 
-            jobDescription: 'Web development', 
-            workingHere: false 
-        },
-        {   position: 'Frontend Developer', 
-            companyName: 'XYZ Inc', 
-            companyCity: 'Los Angeles', 
-            startDate: '07/02/2024', 
-            endDate: '', 
-            jobDescription: 'Web development', 
-            workingHere: true 
-        },
-    ];
-
-    const mockOnChange = vi.fn();
-    const mockAddExperience = vi.fn();
-    const mockHandleCurrentlyWorkHere = vi.fn();
-    
     it('should render heading and render each experiences array', () => {
         const currectExperience = {
             position: '',

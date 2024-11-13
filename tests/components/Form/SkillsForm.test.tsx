@@ -4,29 +4,29 @@ import { SkillsContext } from '../../../src/context/skillsContext';
 import { ReactNode } from 'react';
 import userEvent from '@testing-library/user-event';
 
+const mockTechnicalSkills = [''];
+const mockPersonalSkills = [''];
+const mockHandleTS = vi.fn();
+const mockHandlePS = vi.fn();
+const mockAddTS = vi.fn();
+const mockAddPS = vi.fn();
+
+const MockSkillsProvider = ({ children }: {children: ReactNode}) => (
+    <SkillsContext.Provider
+      value={{
+            technicalSkills: mockTechnicalSkills,
+            personalSkills: mockPersonalSkills,
+            handlePersonalSkills: mockHandlePS,
+            handleTechnicalSkills: mockHandleTS,
+            addPersonalSkills: mockAddPS,
+            addTechnicalSkills: mockAddTS, 
+      }}
+    >
+      {children}
+    </SkillsContext.Provider>
+);
+
 describe('SkillsForm', () => {
-    const mockTechnicalSkills = [''];
-    const mockPersonalSkills = [''];
-    const mockHandleTS = vi.fn();
-    const mockHandlePS = vi.fn();
-    const mockAddTS = vi.fn();
-    const mockAddPS = vi.fn();
-
-    const MockSkillsProvider = ({ children }: {children: ReactNode}) => (
-        <SkillsContext.Provider
-          value={{
-                technicalSkills: mockTechnicalSkills,
-                personalSkills: mockPersonalSkills,
-                handlePersonalSkills: mockHandlePS,
-                handleTechnicalSkills: mockHandleTS,
-                addPersonalSkills: mockAddPS,
-                addTechnicalSkills: mockAddTS, 
-          }}
-        >
-          {children}
-        </SkillsContext.Provider>
-    );
-
     it('should initially render headings and inputs value', () => {
         render(
             <MockSkillsProvider>
@@ -68,6 +68,7 @@ describe('SkillsForm', () => {
     })
 
     it('should call addTechnicalSkills for technical skills and addPersonalSkills for personal skills when the "Add Skills" buttons are clicked', async () => {
+        const user = userEvent.setup();
         render(
             <MockSkillsProvider>
                 <SkillsForm />
@@ -76,8 +77,7 @@ describe('SkillsForm', () => {
 
         const addTechnicalButton = screen.getAllByText(/Add Skills/i)[0];
         const addPersonalButton = screen.getAllByText(/Add Skills/i)[1];
-        const user = userEvent.setup();
-
+   
         await user.click(addTechnicalButton);
         expect(mockAddTS).toHaveBeenCalledTimes(1);
 

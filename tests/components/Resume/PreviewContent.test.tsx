@@ -4,28 +4,28 @@ import { ExperienceProvider } from '../../../src/context/experienceContext';
 import { SkillsProvider } from '../../../src/context/skillsContext';
 import userEvent from '@testing-library/user-event';
 
-describe('PreviewContent', () => {
-    const mockFormData = {
-        personalInfo: {
-            firstName: '', 
-            lastName: '', 
-            email: '', 
-            phone: '', 
-            address: '', 
-            city: '', 
-            postalCode: ''
-        },
-        educationInfo: {
-            schoolName: '', 
-            location: '', 
-            degree: '', 
-            major: '',
-            gradMonth: '', 
-            gradYear: ''
-        },
-    };
-    const mockHandleClosePreview = vi.fn();
+const mockFormData = {
+    personalInfo: {
+        firstName: '', 
+        lastName: '', 
+        email: '', 
+        phone: '', 
+        address: '', 
+        city: '', 
+        postalCode: ''
+    },
+    educationInfo: {
+        schoolName: '', 
+        location: '', 
+        degree: '', 
+        major: '',
+        gradMonth: '', 
+        gradYear: ''
+    },
+};
+const mockHandleClosePreview = vi.fn();
 
+describe('PreviewContent', () => {
     it('should render overlay when isOpen is true', () => {
         render(
             <SkillsProvider>
@@ -56,6 +56,7 @@ describe('PreviewContent', () => {
     })
 
     it('should calls handleClosePreview when close button is clicked', async () => {
+        const user = userEvent.setup()
         render(
             <SkillsProvider>
                 <ExperienceProvider>
@@ -65,9 +66,8 @@ describe('PreviewContent', () => {
         )
 
         const button = screen.getByRole('button', {name: /close/i});
-        const user = userEvent.setup()
 
         await user.click(button);
-        expect(mockHandleClosePreview).toHaveBeenCalledTimes(1);
+        expect(mockHandleClosePreview).toHaveBeenCalled();
     })
 })

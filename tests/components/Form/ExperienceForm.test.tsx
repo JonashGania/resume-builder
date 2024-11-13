@@ -5,36 +5,35 @@ import { ReactNode } from 'react'
 import { ExperienceInfo } from '../../../src/interface/types'
 import userEvent from '@testing-library/user-event'
 
+const currectExperience = {
+    position: '',
+    companyName: '',
+    companyCity: '',
+    startDate: '',
+    endDate: '',
+    jobDescription: '',
+    workingHere: false,
+}
+const mockOnChange = vi.fn();
+const mockAddExperience = vi.fn();
+const mockHandleCurrentlyWorkHere = vi.fn();
+const mockExperiences: ExperienceInfo[] = [];
+
+const MockExperienceProvider = ({ children }: {children: ReactNode}) => (
+    <ExperienceContext.Provider
+      value={{
+        experiences: mockExperiences,
+        currentExperience: currectExperience,
+        setCurrentExperience: mockOnChange,
+        addExperience: mockAddExperience,
+        handleCurrentlyWorkHere: mockHandleCurrentlyWorkHere,
+      }}
+    >
+      {children}
+    </ExperienceContext.Provider>
+);
+
 describe('ExperienceForm', () => {
-    const currectExperience = {
-        position: '',
-        companyName: '',
-        companyCity: '',
-        startDate: '',
-        endDate: '',
-        jobDescription: '',
-        workingHere: false,
-    }
-    const mockOnChange = vi.fn();
-    const mockAddExperience = vi.fn();
-    const mockHandleCurrentlyWorkHere = vi.fn();
-    const mockExperiences: ExperienceInfo[] = [];
-
-    const MockExperienceProvider = ({ children }: {children: ReactNode}) => (
-        <ExperienceContext.Provider
-          value={{
-            experiences: mockExperiences,
-            currentExperience: currectExperience,
-            setCurrentExperience: mockOnChange,
-            addExperience: mockAddExperience,
-            handleCurrentlyWorkHere: mockHandleCurrentlyWorkHere,
-          }}
-        >
-          {children}
-        </ExperienceContext.Provider>
-      );
-
-
     it('should render the inputs with empty value and headingss', () => {
         render(
             <MockExperienceProvider>
@@ -103,6 +102,7 @@ describe('ExperienceForm', () => {
     })
 
     it('should call handleCurrentlyWorkHere when checkbox is toggled', async () => {
+        const user = userEvent.setup();
         render(
             <MockExperienceProvider>
                 <ExperienceForm />
@@ -110,13 +110,13 @@ describe('ExperienceForm', () => {
         )
 
         const checkbox = screen.getByRole('checkbox');
-        const user = userEvent.setup();
-
         await user.click(checkbox);
+
         expect(mockHandleCurrentlyWorkHere).toHaveBeenCalled();
     })
 
     it('should call addExperience when AddButton is clicked', async () => {
+        const user = userEvent.setup();
         render(
             <MockExperienceProvider>
                 <ExperienceForm />
@@ -124,7 +124,6 @@ describe('ExperienceForm', () => {
         )
 
         const button = screen.getByRole('button', {name: /Add Experience/i});
-        const user = userEvent.setup();
 
         await user.click(button);
         expect(mockAddExperience).toHaveBeenCalled();

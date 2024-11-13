@@ -3,30 +3,30 @@ import SkillsSection from '../../../src/components/Section/SkillsSection'
 import { SkillsContext } from '../../../src/context/skillsContext'
 import { ReactNode } from 'react';
 
+const mockTechnicalSkills = ['JavaScript', 'React', 'Laravel'];
+const mockPersonalSkills = ['Communication', 'Time management', 'Teamwork'];
+const mockHandleTS = vi.fn();
+const mockHandlePS = vi.fn();
+const mockAddTS = vi.fn();
+const mockAddPS = vi.fn();
+
+const MockSkillsProvider = ({ children }: {children: ReactNode}) => (
+    <SkillsContext.Provider
+      value={{
+            technicalSkills: mockTechnicalSkills,
+            personalSkills: mockPersonalSkills,
+            handlePersonalSkills: mockHandlePS,
+            handleTechnicalSkills: mockHandleTS,
+            addPersonalSkills: mockAddPS,
+            addTechnicalSkills: mockAddTS, 
+      }}
+    >
+      {children}
+    </SkillsContext.Provider>
+);
+
 describe('SkillsSection', () => {
-    const mockTechnicalSkills = ['JavaScript', 'React', 'Laravel'];
-    const mockPersonalSkills = ['Communication', 'Time management', 'Teamwork'];
-    const mockHandleTS = vi.fn();
-    const mockHandlePS = vi.fn();
-    const mockAddTS = vi.fn();
-    const mockAddPS = vi.fn();
-
-    const MockSkillsProvider = ({ children }: {children: ReactNode}) => (
-        <SkillsContext.Provider
-          value={{
-                technicalSkills: mockTechnicalSkills,
-                personalSkills: mockPersonalSkills,
-                handlePersonalSkills: mockHandlePS,
-                handleTechnicalSkills: mockHandleTS,
-                addPersonalSkills: mockAddPS,
-                addTechnicalSkills: mockAddTS, 
-          }}
-        >
-          {children}
-        </SkillsContext.Provider>
-    );
-
-    it('should skills and headings', () => {
+    it('should render skills and headings', () => {
         render(
             <MockSkillsProvider>
                 <SkillsSection />
