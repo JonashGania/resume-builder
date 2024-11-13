@@ -1,17 +1,17 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import EducationForm from '../../../src/components/Form/EducationForm'
 
-describe('EducationForm', () => {
-    const educationData = {
-        schoolName: '', 
-        location: '', 
-        degree: '', 
-        major: '',
-        gradMonth: '', 
-        gradYear: ''
-    }
-    const mockOnChange = vi.fn();
+const educationData = {
+    schoolName: '', 
+    location: '', 
+    degree: '', 
+    major: '',
+    gradMonth: '', 
+    gradYear: ''
+}
+const mockOnChange = vi.fn();
 
+describe('EducationForm', () => {
     it('should render the inputs with empty value and headings', () => {
         render(<EducationForm educationData={educationData} onChange={mockOnChange}/>)
 
